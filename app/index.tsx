@@ -458,12 +458,11 @@ const App = () => {
             <span>Sprout</span>
          </div>
          <div className="text-sm text-gray-400">
-            © 2025 Horizon Sprout. Built for lifelong learners.
+            © 2026 Horizon Sprout. Built for lifelong learners.
          </div>
          <div className="flex gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-black">Twitter</a>
-            <a href="#" className="hover:text-black">GitHub</a>
-            <a href="#" className="hover:text-black">Email</a>
+            <a href="https://github.com/ttian226/horizon-sprout-web" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a>
+            <a href="mailto:ttian226@gmail.com" className="hover:text-black">Email</a>
          </div>
       </footer>
     </div>
