@@ -312,7 +312,7 @@ const DemoShowcase = () => {
   
   return (
     <div 
-      className="p-8 md:p-12 h-[550px] flex flex-col items-center relative"
+      className="p-8 md:p-12 h-[680px] flex flex-col items-center relative"
     >
         {/* Toggle Controls */}
         <div className="flex gap-2 p-1 bg-gray-100/80 rounded-full mb-12 relative z-20 backdrop-blur-sm border border-gray-200">
