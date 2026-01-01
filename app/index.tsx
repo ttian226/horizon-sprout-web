@@ -291,8 +291,8 @@ const MOCK_SENTENCE: SentenceData = {
 const Navbar = () => (
   <nav className="flex justify-between items-center py-6 px-6 max-w-7xl mx-auto w-full">
     <div className="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900">
-      <img src="/images/icon-48.png" alt="Sprout" className="w-8 h-8" />
-      <span>Sprout</span>
+      <img src="/images/icon-48.png" alt="Horizon Sprout" className="w-8 h-8" />
+      <span>Horizon Sprout</span>
     </div>
   </nav>
 );
@@ -454,11 +454,11 @@ const App = () => {
       {/* Footer */}
       <footer className="py-12 px-6 max-w-7xl mx-auto border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
          <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-            <img src="/images/icon-16.png" alt="Sprout" className="w-5 h-5" />
-            <span>Sprout</span>
+            <img src="/images/icon-16.png" alt="Horizon Sprout" className="w-5 h-5" />
+            <span>Horizon Sprout</span>
          </div>
          <div className="text-sm text-gray-400">
-            © 2026 Horizon Sprout. Built for lifelong learners.
+            © {new Date().getFullYear()} Horizon Sprout. Built for lifelong learners.
          </div>
          <div className="flex gap-6 text-sm text-gray-500">
             <a href="https://github.com/ttian226/horizon-sprout-web" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a>
