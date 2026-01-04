@@ -290,14 +290,12 @@ const MOCK_SENTENCE: SentenceData = {
 
 const Navbar = ({ onGoHome }: { onGoHome?: () => void }) => (
   <nav className="flex justify-between items-center py-6 px-6 max-w-7xl mx-auto w-full">
-    <div 
+    <div
         className="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900 cursor-pointer"
         onClick={onGoHome}
     >
-      <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white">
-        <SproutIcon className="w-5 h-5" isFilled={true} />
-      </div>
-      <span>Sprout</span>
+      <img src="/images/icon-48.png" alt="Horizon Sprout" className="w-8 h-8" />
+      <span>Horizon Sprout</span>
     </div>
   </nav>
 );
@@ -317,7 +315,7 @@ const DemoShowcase = () => {
   
   return (
     <div 
-      className="p-8 md:p-12 h-[550px] flex flex-col items-center relative"
+      className="p-8 md:p-12 h-[630px] flex flex-col items-center relative"
     >
         {/* Toggle Controls */}
         <div className="flex gap-2 p-1 bg-gray-100/80 rounded-full mb-12 relative z-20 backdrop-blur-sm border border-gray-200">
@@ -575,18 +573,15 @@ const LandingPage = ({ onNavigateToPrivacy }: { onNavigateToPrivacy: () => void 
       {/* Footer */}
       <footer className="py-12 px-6 max-w-7xl mx-auto border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
          <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-            <div className="w-5 h-5 bg-black rounded flex items-center justify-center text-white">
-              <SproutIcon className="w-3 h-3" isFilled={true} />
-            </div>
-            <span>Sprout</span>
+            <img src="/images/icon-16.png" alt="Horizon Sprout" className="w-5 h-5" />
+            <span>Horizon Sprout</span>
          </div>
          <div className="text-sm text-gray-400">
-            © 2024 Sprout Inc. 保留所有权利。
+            © {new Date().getFullYear()} Horizon Sprout. Built for lifelong learners.
          </div>
          <div className="flex gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-black">Twitter</a>
-            <a href="#" className="hover:text-black">GitHub</a>
-            <a href="#" className="hover:text-black">Email</a>
+            <a href="https://github.com/ttian226/horizon-sprout-web" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a>
+            <a href="mailto:ttian226@gmail.com" className="hover:text-black">Email</a>
             <button onClick={onNavigateToPrivacy} className="hover:text-black text-left">Privacy Policy</button>
          </div>
       </footer>
