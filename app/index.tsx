@@ -288,11 +288,16 @@ const MOCK_SENTENCE: SentenceData = {
 
 // --- Landing Page Components ---
 
-const Navbar = () => (
+const Navbar = ({ onGoHome }: { onGoHome?: () => void }) => (
   <nav className="flex justify-between items-center py-6 px-6 max-w-7xl mx-auto w-full">
-    <div className="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900">
-      <img src="/images/icon-48.png" alt="Horizon Sprout" className="w-8 h-8" />
-      <span>Horizon Sprout</span>
+    <div 
+        className="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900 cursor-pointer"
+        onClick={onGoHome}
+    >
+      <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white">
+        <SproutIcon className="w-5 h-5" isFilled={true} />
+      </div>
+      <span>Sprout</span>
     </div>
   </nav>
 );
@@ -312,7 +317,7 @@ const DemoShowcase = () => {
   
   return (
     <div 
-      className="p-8 md:p-12 h-[630px] flex flex-col items-center relative"
+      className="p-8 md:p-12 h-[550px] flex flex-col items-center relative"
     >
         {/* Toggle Controls */}
         <div className="flex gap-2 p-1 bg-gray-100/80 rounded-full mb-12 relative z-20 backdrop-blur-sm border border-gray-200">
@@ -364,7 +369,123 @@ const DemoShowcase = () => {
   );
 };
 
-const App = () => {
+// --- Privacy Page Component ---
+
+const PrivacyPage = ({ onBack }: { onBack: () => void }) => {
+  const [lang, setLang] = useState<'en' | 'zh'>('en');
+
+  return (
+    <div className="min-h-screen bg-white text-[#37352F] selection:bg-[#E3E2E0] font-sans">
+      <Navbar onGoHome={onBack} />
+      
+      <div className="max-w-3xl mx-auto px-6 py-12 pb-32">
+        {/* Language Switcher */}
+        <div className="flex gap-4 mb-10 text-sm font-medium text-gray-500">
+          <button 
+            onClick={() => setLang('en')}
+            className={`hover:text-black transition-colors ${lang === 'en' ? 'text-black border-b border-black' : ''}`}
+          >
+            English
+          </button>
+          <button 
+            onClick={() => setLang('zh')}
+            className={`hover:text-black transition-colors ${lang === 'zh' ? 'text-black border-b border-black' : ''}`}
+          >
+            中文 (Chinese)
+          </button>
+        </div>
+
+        {lang === 'en' ? (
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl font-bold mb-8 tracking-tight">Privacy Policy</h1>
+            <p className="text-gray-500 mb-8 text-sm"><strong>Last Updated:</strong> January 1, 2026</p>
+            
+            <p className="mb-6 leading-relaxed">
+              Your privacy is important to us. <strong>Horizon Sprout</strong> ("we", "our", or "the Extension") operates on a "Local-First" architecture. This means we do not own servers to store your data. Your data lives on your device and in your personal Notion workspace.
+            </p>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">1. Data Collection & Usage</h2>
+            <p className="mb-4 text-gray-600">We collect and process the following data strictly to provide the Extension's functionality:</p>
+            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-600">
+                <li><strong>Selected Text & Context:</strong> The words or sentences you select on a webpage, along with surrounding text (context), are temporarily processed to generate translations.</li>
+                <li><strong>User Settings:</strong> Your preferences (e.g., target language, API keys) are stored locally in your browser (Chrome Sync Storage).</li>
+                <li><strong>Notion Data:</strong> When you choose to save a word, we transmit the data directly to your authorized Notion database.</li>
+            </ul>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">2. Third-Party Services (AI Models)</h2>
+            <p className="mb-4 text-gray-600">The Extension connects directly to third-party AI providers to generate translations and definitions. We do not act as a middleman. Data is sent directly from your browser to:</p>
+            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-600">
+                <li><strong>OpenAI / Google Gemini / Anthropic / DeepSeek:</strong> Only the text you explicitly select (and its immediate context) is sent to the AI model you choose in the settings. Please refer to their respective privacy policies for how they handle API data.</li>
+            </ul>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">3. Data Storage</h2>
+            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-600">
+                <li><strong>No Proprietary Servers:</strong> We do not operate a backend server. We do not track, store, or sell your browsing history or personal information.</li>
+                <li><strong>Local Storage:</strong> Your API keys and settings are stored encrypted in your browser's local storage.</li>
+                <li><strong>Notion:</strong> Your vocabulary data is stored in your own Notion workspace. You retain full ownership and control over this data.</li>
+            </ul>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">4. Data Security</h2>
+            <p className="mb-6 text-gray-600">All data transmission between the Extension, AI providers, and Notion occurs over secure HTTPS connections. Since we do not have a server, your API keys are never transmitted to us.</p>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">5. Changes to This Policy</h2>
+            <p className="mb-6 text-gray-600">We may update this policy to reflect changes in our practices. If we make significant changes, we will notify you through the Extension's update notes.</p>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">6. Contact Us</h2>
+            <p className="mb-6 text-gray-600">If you have questions about this policy, please contact us at: <a href="mailto:ttian226@gmail.com" className="text-blue-600 hover:underline">ttian226@gmail.com</a></p>
+          </div>
+        ) : (
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl font-bold mb-8 tracking-tight">隐私政策</h1>
+            <p className="text-gray-500 mb-8 text-sm"><strong>最后更新：</strong> 2026年1月1日</p>
+
+            <p className="mb-6 leading-relaxed">
+              我们非常重视您的隐私。<strong>Horizon Sprout</strong>（以下简称“插件”）采用“本地优先（Local-First）”架构。这意味着我们没有自建服务器来存储您的数据。您的数据仅存储在您的设备和您的 Notion 笔记中。
+            </p>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">1. 数据收集与使用</h2>
+            <p className="mb-4 text-gray-600">我们仅收集和处理以下数据以实现插件功能：</p>
+            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-600">
+                <li><strong>选中文本与语境：</strong> 您在网页上选中的单词或句子，以及周围的上下文文本，会被临时处理以生成翻译。</li>
+                <li><strong>用户设置：</strong> 您的偏好设置（如目标语言、API 密钥）存储在您的浏览器本地（Chrome Sync Storage）。</li>
+                <li><strong>Notion 数据：</strong> 当您点击保存时，我们会将数据直接传输到您授权的 Notion 数据库中。</li>
+            </ul>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">2. 第三方服务 (AI模型)</h2>
+            <p className="mb-4 text-gray-600">本插件直接连接第三方 AI 服务商以生成翻译。我们不作为中间人拦截数据。数据将从您的浏览器直接发送至：</p>
+            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-600">
+                <li><strong>OpenAI / Google Gemini / Anthropic / DeepSeek：</strong> 仅您主动选中的文本（及其上下文）会被发送至您在设置中选择的 AI 模型。请参阅各自服务商的隐私政策以了解他们如何处理 API 数据。</li>
+            </ul>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">3. 数据存储</h2>
+            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-600">
+                <li><strong>无自建服务器：</strong> 我们不运营后端服务器，也不会追踪、存储或出售您的浏览记录或个人信息。</li>
+                <li><strong>本地存储：</strong> 您的 API 密钥和配置加密存储在您的浏览器本地。</li>
+                <li><strong>Notion：</strong> 您的生词数据存储在您自己的 Notion 工作区中。您对这些数据拥有完全的所有权和控制权。</li>
+            </ul>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">4. 数据安全</h2>
+            <p className="mb-6 text-gray-600">插件与 AI 服务商、Notion 之间的所有数据传输均通过安全的 HTTPS 连接进行。由于没有后端服务器，您的 API 密钥永远不会发送给我们。</p>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">5. 政策变更</h2>
+            <p className="mb-6 text-gray-600">我们可能会更新本政策以反映业务变化。如果有重大变更，我们将通过插件更新日志通知您。</p>
+
+            <h2 className="text-xl font-bold mt-10 mb-4 pb-2 border-b border-gray-100">6. 联系我们</h2>
+            <p className="mb-6 text-gray-600">如果您对本政策有任何疑问，请联系我们：<a href="mailto:ttian226@gmail.com" className="text-blue-600 hover:underline">ttian226@gmail.com</a></p>
+          </div>
+        )}
+
+        <footer className="mt-20 pt-8 border-t border-gray-100 text-sm text-gray-400">
+            &copy; 2025 Horizon Sprout. All rights reserved.
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+// --- Landing Page (Original App) ---
+
+const LandingPage = ({ onNavigateToPrivacy }: { onNavigateToPrivacy: () => void }) => {
   return (
     <div className="min-h-screen bg-white text-[#111] selection:bg-[#E3E2E0]">
       <Navbar />
@@ -454,18 +575,52 @@ const App = () => {
       {/* Footer */}
       <footer className="py-12 px-6 max-w-7xl mx-auto border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
          <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-            <img src="/images/icon-16.png" alt="Horizon Sprout" className="w-5 h-5" />
-            <span>Horizon Sprout</span>
+            <div className="w-5 h-5 bg-black rounded flex items-center justify-center text-white">
+              <SproutIcon className="w-3 h-3" isFilled={true} />
+            </div>
+            <span>Sprout</span>
          </div>
          <div className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Horizon Sprout. Built for lifelong learners.
+            © 2024 Sprout Inc. 保留所有权利。
          </div>
          <div className="flex gap-6 text-sm text-gray-500">
-            <a href="https://github.com/ttian226/horizon-sprout-web" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a>
-            <a href="mailto:ttian226@gmail.com" className="hover:text-black">Email</a>
+            <a href="#" className="hover:text-black">Twitter</a>
+            <a href="#" className="hover:text-black">GitHub</a>
+            <a href="#" className="hover:text-black">Email</a>
+            <button onClick={onNavigateToPrivacy} className="hover:text-black text-left">Privacy Policy</button>
          </div>
       </footer>
     </div>
+  );
+};
+
+// --- Main App Entry ---
+
+const App = () => {
+  const [route, setRoute] = useState<'home' | 'privacy'>(() => {
+    // Check URL path for initial route
+    if (window.location.pathname.includes('privacy')) return 'privacy';
+    if (window.location.hash === '#privacy') return 'privacy';
+    return 'home';
+  });
+
+  const navigateToPrivacy = () => {
+    window.history.pushState({}, '', '/privacy');
+    setRoute('privacy');
+    window.scrollTo(0, 0);
+  };
+
+  const navigateToHome = () => {
+    window.history.pushState({}, '', '/');
+    setRoute('home');
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <>
+      {route === 'home' && <LandingPage onNavigateToPrivacy={navigateToPrivacy} />}
+      {route === 'privacy' && <PrivacyPage onBack={navigateToHome} />}
+    </>
   );
 };
 
