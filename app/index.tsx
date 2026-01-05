@@ -493,9 +493,11 @@ const LandingPage = ({ onNavigateToPrivacy }: { onNavigateToPrivacy: () => void 
         <div className="hero-glow animate-fade-in-up"></div>
         
         <div className="animate-fade-in-up">
+           {/* TODO: 审核完成后显示 "1.0 版本现已发布"
            <span className="inline-block px-3 py-1 rounded-full bg-[#F0F0EF] text-[#555] text-xs font-medium mb-6 border border-[#E0E0E0]">
-              2.0 版本现已发布
+              1.0 版本现已发布
            </span>
+           */}
            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
              沉浸阅读，无缝生长。
            </h1>
