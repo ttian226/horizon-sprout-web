@@ -493,11 +493,9 @@ const LandingPage = ({ onNavigateToPrivacy }: { onNavigateToPrivacy: () => void 
         <div className="hero-glow animate-fade-in-up"></div>
         
         <div className="animate-fade-in-up">
-           {/* TODO: 审核完成后显示 "1.0 版本现已发布"
            <span className="inline-block px-3 py-1 rounded-full bg-[#F0F0EF] text-[#555] text-xs font-medium mb-6 border border-[#E0E0E0]">
               1.0 版本现已发布
            </span>
-           */}
            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
              沉浸阅读，无缝生长。
            </h1>
@@ -505,11 +503,10 @@ const LandingPage = ({ onNavigateToPrivacy }: { onNavigateToPrivacy: () => void 
              告别碎片化查词。在心流中捕捉灵感，<br className="hidden md:block" />让生词在你的第二大脑中自动生根发芽。
            </p>
            
-           {/* TODO: 审核通过后改回 "添加到 Chrome" 并添加链接 */}
            <div className="flex gap-4 justify-center mb-20">
-             <button className="bg-gray-400 text-white px-8 py-3.5 rounded-full font-medium text-base cursor-default shadow-xl shadow-gray-200">
-               敬请期待
-             </button>
+             <a href="https://chromewebstore.google.com/detail/horizon-sprout-ai-context/mpkjkbpifjhpcocigepfapnbccboljdd" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-8 py-3.5 rounded-full font-medium text-base hover:bg-gray-800 transition-all shadow-xl shadow-gray-200 hover:shadow-2xl hover:-translate-y-0.5">
+               添加到 Chrome
+             </a>
            </div>
         </div>
 
